@@ -15,7 +15,7 @@ from sklearn.linear_model import LinearRegression
 
 colunas_input = ['tamanho', 'ano', 'garagem']
 
-input = open("../../models/modelo-salvo", "rb")
+input = open("models/modelo-salvo", "rb")
 modelo = pickle.load(input)
 
 
@@ -29,8 +29,7 @@ basic_auth = BasicAuth(app)
 
 @app.route("/")
 def home():
-    username = os.environ.keys()
-    return f"Minha primeira API. {username}"
+    return "Minha primeira API."
 
 @app.route("/sentimento/<frase>")
 @basic_auth.required
@@ -38,7 +37,7 @@ def sentimento(frase: str) -> float:
     tb = TextBlob(frase)
     tb_en = tb.translate(from_lang="pt_br", to="en")
     polaridade = tb_en.sentiment.polarity
-    return f"A polaridade dessa frase é {polaridade}"
+    return f"A polaridade dessa frase é {polaridade:.2f}"
 
 @app.route("/cotacao/", methods=['POST'])
 @basic_auth.required
