@@ -15,7 +15,7 @@ from sklearn.linear_model import LinearRegression
 
 colunas_input = ['tamanho', 'ano', 'garagem']
 
-input = open("models/modelo-salvo", "rb")
+input = open(".../../models/modelo-salvo", "rb")
 modelo = pickle.load(input)
 
 

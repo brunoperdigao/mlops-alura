@@ -7,4 +7,7 @@ params = {
         }
 endpoint = 'http://127.0.0.1:5000/cotacao/'
 response = requests.post(endpoint, json=params)
-print(response.text)
+if response:
+    print(response.text)
+else:
+    print('vazio')
