@@ -7,8 +7,6 @@ ARG BASIC_AUTH_PASSWORD_ARG
 ENV BASIC_AUTH_USERNAME=$BASIC_AUTH_USERNAME_ARG
 ENV BASIC_AUTH_PASSWORD=$BASIC_AUTH_PASSWORD_ARG
 
-ENV FLASK_APP=src/app/main.py
-ENV FLASK_RUN_HOST=0.0.0.0
 ENV FLASK_ENV=production
 
 COPY ./requirements.txt /usr/requirements.txt
@@ -22,6 +20,6 @@ COPY ./src /usr/src
 COPY ./models /usr/models
 
 
-CMD [ "gunicorn --chdir src/app/ main:app" ]
+CMD [ "gunicorn", "--chdir", "src/app/", "main:app" ]
 
 
