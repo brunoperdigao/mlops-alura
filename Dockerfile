@@ -17,8 +17,7 @@ RUN pip install -r requirements.txt
 COPY ./src /usr/src
 COPY ./models /usr/models
 
-ENTRYPOINT [ "gunicorn" ]
 
-CMD [ "--chdir src/app/ main:app" ]
+CMD [ "gunicorn --chdir src/app/ main:app" ]
 
 
