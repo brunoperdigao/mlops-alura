@@ -17,8 +17,8 @@ RUN pip install -r requirements.txt
 COPY ./src /usr/src
 COPY ./models /usr/models
 
-ENTRYPOINT [ "python3" ]
+# ENTRYPOINT [ "python3" ]
 
-CMD [ "src/app/main.py" ]
+CMD [ "gunicorn --chdir src/app/ main:app" ]
 
 
